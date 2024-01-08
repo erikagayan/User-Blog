@@ -18,11 +18,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "rest_framework",
     "rest_framework_simplejwt",
     "drf_spectacular",
-
     "users",
     "blog",
 ]
@@ -42,8 +40,7 @@ ROOT_URLCONF = "user_blog.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -98,9 +95,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-
-    "DEFAULT_SCHEMA_CLASS":
-        "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SIMPLE_JWT = {
@@ -119,5 +114,5 @@ SPECTACULAR_SETTINGS = {
         "defaultModelRendering": "model",
         "defaultModelExpandDepth": 2,
         "defaultModelsExpandDepth": 2,
-    }
+    },
 }

@@ -16,8 +16,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super(PostSerializer, self).to_representation(instance)
-        if 'request' in self.context and self.context['request'].method in ['GET']:
-            representation['author'] = UserSerializer(instance.author).data
+        if "request" in self.context and self.context["request"].method in ["GET"]:
+            representation["author"] = UserSerializer(instance.author).data
         return representation
 
 

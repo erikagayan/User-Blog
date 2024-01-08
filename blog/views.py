@@ -24,13 +24,13 @@ class PostViewSet(
         return PostSerializer
 
     def get_serializer_context(self):
-        return {'request': self.request}
+        return {"request": self.request}
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
     def get_permissions(self):
-        if self.action in ['create']:
+        if self.action in ["create"]:
             permission_classes = [IsAuthenticated]
         else:
             permission_classes = [IsStaffOrReadOnly]

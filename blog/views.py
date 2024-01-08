@@ -1,3 +1,5 @@
+from typing import Type
+
 from rest_framework import viewsets, mixins
 
 from blog.models import Post
@@ -14,22 +16,22 @@ class PostViewSet(
     mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    queryset: Post.objects.all() = Post.objects.all()
+    serializer_class: PostSerializer = PostSerializer
+    permission_classes: list[IsAuthenticated | IsStaffOrReadOnly] = [IsAuthenticated, IsStaffOrReadOnly]
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> Type[PostListSerializer | PostSerializer]:
         if self.action == "list":
             return PostListSerializer
         return PostSerializer
 
-    def get_serializer_context(self):
+    def get_serializer_context(self) -> dict:
         return {"request": self.request}
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer: PostSerializer):
         serializer.save(author=self.request.user)
 
-    def get_permissions(self):
+    def get_permissions(self) -> list[IsAuthenticated | IsStaffOrReadOnly]:
         if self.action in ["create"]:
             permission_classes = [IsAuthenticated]
         else:

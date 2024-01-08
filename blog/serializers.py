@@ -14,9 +14,12 @@ class PostSerializer(serializers.ModelSerializer):
             "updated_at",
         ]
 
-    def to_representation(self, instance):
+    def to_representation(self, instance: Post) -> dict:
         representation = super(PostSerializer, self).to_representation(instance)
-        if "request" in self.context and self.context["request"].method in ["GET"]:
+        if (
+            "request" in self.context
+            and self.context["request"].method in ["GET"]
+        ):
             representation["author"] = UserSerializer(instance.author).data
         return representation
 
@@ -28,7 +31,7 @@ class PostListSerializer(serializers.ModelSerializer):
         model = Post
         fields = ["id", "author_username", "title"]
 
-    def get_author_username(self, obj):
+    def get_author_username(self, obj: Post) -> str:
         return obj.author.username
 
 

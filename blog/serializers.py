@@ -15,7 +15,8 @@ class PostSerializer(serializers.ModelSerializer):
         ]
 
     def to_representation(self, instance: Post) -> dict:
-        representation = super(PostSerializer, self).to_representation(instance)
+        representation = (super(PostSerializer, self).
+                          to_representation(instance))
         if (
             "request" in self.context
             and self.context["request"].method in ["GET"]

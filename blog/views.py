@@ -18,9 +18,11 @@ class PostViewSet(
 ):
     queryset: Post.objects.all() = Post.objects.all()
     serializer_class: PostSerializer = PostSerializer
-    permission_classes: list[IsAuthenticated | IsStaffOrReadOnly] = [IsAuthenticated, IsStaffOrReadOnly]
+    permission_classes: list[IsAuthenticated | IsStaffOrReadOnly] = \
+        [IsAuthenticated, IsStaffOrReadOnly]
 
-    def get_serializer_class(self) -> Type[PostListSerializer | PostSerializer]:
+    def get_serializer_class(self) -> (
+            Type)[PostListSerializer | PostSerializer]:
         if self.action == "list":
             return PostListSerializer
         return PostSerializer

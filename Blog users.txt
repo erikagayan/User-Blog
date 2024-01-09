@@ -1,0 +1,16 @@
+Admin:
+admin@mail.com
+admin
+admin
+
+
+Moderator:
+erik@mail.com
+Erik
+#jc8MV5^
+
+
+User:
+john@mail.com
+John
+A7+3ktD(

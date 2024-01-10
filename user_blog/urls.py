@@ -19,4 +19,5 @@ urlpatterns = [
     path(
         "api/doc/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
     ),
+    path("api/email/", include("email_verification.urls", namespace="email"))
 ]

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "users",
     "blog",
+    "email_verification",
 ]
 
 MIDDLEWARE = [
